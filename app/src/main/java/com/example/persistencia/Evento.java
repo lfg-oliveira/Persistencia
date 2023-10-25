@@ -19,6 +19,7 @@ public class Evento {
         this.curso = curso;
         this.url = url;
     }
+
     public Evento(){
 
     }

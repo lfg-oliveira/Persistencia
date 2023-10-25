@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.persistencia.R;
+
 public class CadastrarEventoActivity extends AppCompatActivity {
 
      //Aqui deve-se colocar as instruções para realizar o cadastro
@@ -53,9 +55,5 @@ public class CadastrarEventoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
 }

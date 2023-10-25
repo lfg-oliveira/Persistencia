@@ -5,8 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.net.wifi.aware.PublishConfig;
-import android.widget.Toast;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -67,6 +66,25 @@ public class EventoHelper extends SQLiteOpenHelper {
         database.insert(TABLE_NAME,
                 null,valores);
 
+    }
+
+    public Evento obterPorID(int id){
+        database = getReadableDatabase();
+        String sql = "select * from "+TABLE_NAME+" where "+ID_COL+" = " + id;
+        Cursor cursor = database.rawQuery(sql,null);
+        Evento evento = new Evento();
+
+        if(cursor.moveToFirst()){
+            //obter os dados da tupla
+            int idbd = cursor.getInt(0);
+            String desc = cursor.getString(1);
+            String curso = cursor.getString(2);
+            String url = cursor.getString(3);
+
+            evento = new Evento(idbd, desc, curso, url);
+        }
+        cursor.close();
+        return evento;
     }
 
     public List<Evento> listaTodos(){

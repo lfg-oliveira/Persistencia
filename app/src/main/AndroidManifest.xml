@@ -10,8 +10,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Persistencia"
-        tools:targetApi="31" >
-        <activity android:name=".MainActivity" />
-    </application>
+        tools:targetApi="31">
+        <activity
+            android:name=".Detalhes"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CadastrarEventoActivity" />
+        <activity android:name=".ListarEventoActivity" />
+    </application>
 </manifest>

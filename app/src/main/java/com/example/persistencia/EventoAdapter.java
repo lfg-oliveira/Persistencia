@@ -1,5 +1,7 @@
 package com.example.persistencia;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,9 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-import java.util.zip.Inflater;
 
 import android.content.Context;
+
+import com.example.persistencia.R;
 
 
 public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder> {
@@ -73,6 +76,23 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
             this.textViewCursoDoEvento = itemView.findViewById(R.id.textViewCursoDoEvento);
             this.textViewUrl = itemView.findViewById(R.id.textViewUrl);
             this.barrahorizontal = itemView.findViewById(R.id.divider);
+
+            this.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    // Insere os valores em um Bundle.
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("ID", Integer.parseInt(textViewId.getText().toString()));
+
+                    // Chamar a tela de Descricão.
+                    Intent intent  = new Intent(
+                            itemView.getContext(),
+                            Detalhes.class);
+                    intent.putExtras(bundle);
+                    itemView.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }
